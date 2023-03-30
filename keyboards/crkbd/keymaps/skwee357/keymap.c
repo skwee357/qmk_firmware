@@ -25,34 +25,42 @@ enum layers {
     LR_ADJ
 };
 
-enum custom_keycodes {
-    ZM_IN = SAFE_RANGE,
-    ZM_OUT
-};
-
-#define OSL_LWR OSL(LR_LWR)
-#define OSL_RSE OSL(LR_RSE)
+#define MO_LWR MO(LR_LWR)
+#define MO_RSE MO(LR_RSE)
 #define MO_ADJ MO(LR_ADJ)
+
+#define ZM_IN LGUI(KC_EQL)
+#define ZM_OUT LGUI(KC_MINS)
+
+#define F_UNDO LGUI(KC_Z)
+#define F_CUT LGUI(KC_X)
+#define F_COPY LGUI(KC_C)
+#define F_PASTE LGUI(KC_V)
+
+#define OSM_LCTL OSM(MOD_LCTL)
+#define OSM_LALT OSM(MOD_LALT)
+#define OSM_LCMD OSM(MOD_LGUI)
+#define OSM_HYPR OSM(MOD_HYPR)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LR_QWERTY] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_MINS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-LCMD_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+       KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, OSM(MOD_RSFT),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                            LALT_T(KC_DEL), OSL_LWR, HYPR_T(KC_SPC),   RCMD_T(KC_ENT), OSL_RSE, RCTL_T(KC_BSPC)
+                                           KC_DEL,  MO_LWR,  KC_SPC,     KC_ENT,  MO_RSE, KC_BSPC
                                       //`--------------------------'  `--------------------------'
 
   ),
 
   [LR_LWR] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_LPRN,                      KC_RPRN,    KC_7,    KC_8,    KC_9,  KC_EQL, KC_MINS,
+       KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_LCBR,                      KC_RCBR,    KC_7,    KC_8,    KC_9,  KC_EQL, KC_MINS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_TILD, KC_QUES, KC_PERC, KC_ASTR, KC_LCBR,                      KC_RCBR,    KC_4,    KC_5,    KC_6,    KC_0, KC_PLUS,
+      _______, KC_TILD, KC_QUES, KC_PERC, KC_ASTR, KC_LPRN,                      KC_RPRN,    KC_4,    KC_5,    KC_6,    KC_0, KC_PLUS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_BSLS, KC_PIPE, KC_CIRC, KC_AMPR, KC_LBRC,                      KC_RBRC,    KC_1,    KC_2,    KC_3, KC_SLSH, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -62,11 +70,11 @@ OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     
 
   [LR_RSE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   ZM_IN,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_HOME, XXXXXXX, KC_PGUP, XXXXXXX,   ZM_IN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX,  ZM_OUT,
+      KC_CAPS, XXXXXXX,OSM_LCTL,OSM_LALT,OSM_LCMD,OSM_HYPR,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX,  ZM_OUT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, _______,
+      _______,  F_UNDO,   F_CUT,  F_COPY, F_PASTE, XXXXXXX,                      XXXXXXX,  KC_END, XXXXXXX, KC_PGDN, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______,  MO_ADJ, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -74,11 +82,11 @@ OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     
 
   [LR_ADJ] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, XXXXXXX,
+      QK_BOOT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -86,26 +94,6 @@ OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case ZM_IN:
-            if(record->event.pressed) {
-                register_code(KC_LGUI);
-                register_code(KC_EQL);
-            } else {
-                unregister_code(KC_LGUI);
-                unregister_code(KC_EQL);
-            }
-        break;
-        case ZM_OUT:
-            if(record->event.pressed) {
-                register_code(KC_LGUI);
-                register_code(KC_MINS);
-            } else {
-                unregister_code(KC_LGUI);
-                unregister_code(KC_EQL);
-            }
-        break;
-    }
     return true;
 }
 
