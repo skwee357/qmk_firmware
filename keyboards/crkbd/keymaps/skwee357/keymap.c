@@ -46,6 +46,7 @@ enum layers {
 #define OSM_LALT OSM(MOD_LALT)
 #define OSM_LCMD OSM(MOD_LGUI)
 #define OSM_HYPR OSM(MOD_HYPR)
+#define OSM_LSFT OSM(MOD_LSFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LR_QWERTY] = LAYOUT_split_3x6_3(
@@ -54,9 +55,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, OSM(MOD_RSFT),
+      XXXXXXX,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_DEL,  MO_LWR,  KC_SPC,     KC_ENT,  MO_RSE, KC_BSPC
+                                         OSM_LSFT,  MO_LWR,  KC_SPC,     KC_ENT,  MO_RSE, KC_BSPC
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -81,7 +82,7 @@ OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,  F_UNDO,   F_CUT,  F_COPY, F_PASTE, XXXXXXX,                      XXXXXXX,  KC_END, XXXXXXX, KC_PGDN, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______,  MO_ADJ,  F_LNCH,    _______, _______, _______
+                                           KC_DEL,  MO_ADJ,  F_LNCH,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
