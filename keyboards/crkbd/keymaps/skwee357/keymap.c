@@ -36,6 +36,11 @@ enum layers {
 #define F_CUT LGUI(KC_X)
 #define F_COPY LGUI(KC_C)
 #define F_PASTE LGUI(KC_V)
+#define F_BSWRD LCTL(KC_BSPC)
+#define F_DLWRD LCTL(KC_W)
+
+#define F_LNCH LGUI(KC_SPC)
+#define F_STAB S(KC_TAB)
 
 #define OSM_LCTL OSM(MOD_LCTL)
 #define OSM_LALT OSM(MOD_LALT)
@@ -64,19 +69,19 @@ OSM(MOD_LSFT),    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_BSLS, KC_PIPE, KC_CIRC, KC_AMPR, KC_LBRC,                      KC_RBRC,    KC_1,    KC_2,    KC_3, KC_SLSH, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    _______,  MO_ADJ, _______
+                                          _______, _______, _______,    _______,  MO_ADJ, F_BSWRD
                                       //`--------------------------'  `--------------------------'
   ),
 
   [LR_RSE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_HOME, XXXXXXX, KC_PGUP, XXXXXXX,   ZM_IN,
+       F_STAB, XXXXXXX, F_DLWRD, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_HOME, XXXXXXX, KC_PGUP, XXXXXXX,   ZM_IN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS, XXXXXXX,OSM_LCTL,OSM_LALT,OSM_LCMD,OSM_HYPR,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX,  ZM_OUT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,  F_UNDO,   F_CUT,  F_COPY, F_PASTE, XXXXXXX,                      XXXXXXX,  KC_END, XXXXXXX, KC_PGDN, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______,  MO_ADJ, _______,    _______, _______, _______
+                                          _______,  MO_ADJ,  F_LNCH,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
