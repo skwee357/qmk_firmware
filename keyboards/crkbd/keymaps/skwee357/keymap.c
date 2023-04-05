@@ -36,7 +36,7 @@ enum layers {
 #define F_CUT LGUI(KC_X)
 #define F_COPY LGUI(KC_C)
 #define F_PASTE LGUI(KC_V)
-#define F_BSWRD LCTL(KC_BSPC)
+#define F_BSWRD LALT(KC_BSPC)
 #define F_DLWRD LCTL(KC_W)
 
 #define F_LNCH LGUI(KC_SPC)
@@ -70,27 +70,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_BSLS, KC_PIPE, KC_CIRC, KC_AMPR, KC_LBRC,                      KC_RBRC,    KC_1,    KC_2,    KC_3, KC_SLSH, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    _______,  MO_ADJ, F_BSWRD
+                                          _______, _______, _______,    _______,  MO_ADJ, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [LR_RSE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       F_STAB, XXXXXXX, F_DLWRD, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_HOME, XXXXXXX, KC_PGUP, XXXXXXX,   ZM_IN,
+       F_STAB, XXXXXXX, F_DLWRD, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_HOME, XXXXXXX, KC_PGUP, XXXXXXX,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_CAPS, XXXXXXX,OSM_LCTL,OSM_LALT,OSM_LCMD,OSM_HYPR,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX,  ZM_OUT,
+      KC_CAPS, XXXXXXX,OSM_LCTL,OSM_LALT,OSM_LCMD,OSM_HYPR,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, F_BSWRD,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,  F_UNDO,   F_CUT,  F_COPY, F_PASTE, XXXXXXX,                      XXXXXXX,  KC_END, XXXXXXX, KC_PGDN, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_DEL,  MO_ADJ,  F_LNCH,    _______, _______, _______
+                                          _______,  MO_ADJ,  F_LNCH,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [LR_ADJ] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX,
+      QK_BOOT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   ZM_IN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, XXXXXXX,
+      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,  ZM_OUT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CG_TOGG,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
