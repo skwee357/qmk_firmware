@@ -41,6 +41,7 @@ enum layers {
 
 #define F_LNCH LGUI(KC_SPC)
 #define F_STAB S(KC_TAB)
+#define F_TMUX LCTL(KC_A)
 
 #define OSM_LCTL OSM(MOD_LCTL)
 #define OSM_LALT OSM(MOD_LALT)
@@ -80,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS, XXXXXXX,OSM_LCTL,OSM_LALT,OSM_LCMD,OSM_HYPR,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, F_BSWRD,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,  F_UNDO,   F_CUT,  F_COPY, F_PASTE, XXXXXXX,                      XXXXXXX,  KC_END, XXXXXXX, KC_PGDN, XXXXXXX, _______,
+      _______,  F_UNDO,   F_CUT,  F_COPY, F_PASTE,  F_TMUX,                      XXXXXXX,  KC_END, XXXXXXX, KC_PGDN, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______,  MO_ADJ,  F_LNCH,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
